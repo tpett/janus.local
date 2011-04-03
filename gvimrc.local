@@ -1,0 +1,9 @@
+
+" Allow Shift selection
+let macvim_hig_shift_movement = 1
+
+" Set initial window size to 150X35
+set lines=50 columns=150
+
+" Default gui color scheme
+color twilight

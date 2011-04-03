@@ -1,0 +1,13 @@
+h1. Tpett's Janus Configuration
+
+h3. Description
+
+These are my local Janus configuration files.  Check out https://github.com/carlhuda/janus for more information on Janus.
+
+h3. Installation
+
+bc. $ git clone git://github.com/tpett/janus.local.git ~/.janus.local
+$ cd ~/.janus.local
+$ rake
+
+The rake command will add the appropriate symlinks to these files so Janus will find them.

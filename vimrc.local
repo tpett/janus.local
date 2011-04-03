@@ -1,0 +1,90 @@
+
+" Add a few more file tyeps to ignore
+set wildignore+=*.py[co],*.log
+
+" Add # style comments to comment continuation
+set comments& comments+=b:# formatoptions& formatoptions+=or
+
+" Remove the left and right scroll bar in MacVim
+set guioptions-=rL
+
+" Remap the leader character
+let mapleader = ","
+
+" Change NERDTreeSortOrder / Reveal file hotkey
+let NERDTreeSortOrder=['*', '\.swp$', '\.bak$', '\~$']
+map <Leader>r :NERDTreeFind<CR>
+
+" Map CommandT
+nmap <silent> <Leader>t :CommandT<CR>
+
+" Hide search highlighting for current search
+map <Leader><Space> :noh<CR>
+
+" Gundo
+nnoremap <F5> :GundoToggle<CR>
+
+" Open a new split window with the current buffer and switch to it
+nnoremap <leader>w <C-w>v<C-w>l
+
+" Set undofile -- undo history persists after file closed
+set undofile
+
+" Use normal search regex
+nnoremap / /\v
+vnoremap / /\v
+
+" Autosave on blur
+au FocusLost * :wa
+
+" Exit insert mode on blur
+"au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
+
+" Quick exit insert mode
+inoremap jj <ESC>
+
+" Remap F1
+map <F1> <Esc>
+imap <F1> <Esc>
+
+" Add shortcuts for Fugitive
+nnoremap <Leader>fs :Gstatus<CR>
+nnoremap <Leader>fb :Gblame<CR>
+nnoremap <Leader>fd :Gdiff<CR>
+nnoremap <Leader>fr :Gread<CR>
+nnoremap <Leader>fl :Glog<CR>
+
+" Use Ack instead of Grep
+set grepprg=ack
+set grepformat=%f:%l:%m
+
+" Remove trailing whitespace on save of certain files
+autocmd BufWritePre *.pl,*.c,*.rb,*.py,*.erb,*.haml,*.html,*.css,*.less,*.scss :%s/\s\+$//e
+
+" Set Python to use 4 spaces for indention instead of the default 2
+autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4
+
+" Highlight any text past 80 characters and mark it as TooLong
+" autocmd FileType python match TooLong '\%>80v.\+'
+" autocmd FileType ruby match TooLong '\%>100v.\+'
+
+" Use verbose syntax highlight in Python
+let python_highlight_all=1
+
+" Add a few more file types to ruby syntax
+au BufRead,BufNewFile {*.thor}    set ft=ruby
+
+" Setup less files
+au BufRead,BufNewFile {*.less}    set ft=less
+
+
+" Default color scheme
+color desert
+
+" Use an undodir to persist all undo history
+set undodir=~/.vim/backup 
+
+" Set line numbers relative
+set relativenumber
+au BufReadPost * set relativenumber
+
