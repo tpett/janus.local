@@ -13,6 +13,7 @@ let mapleader = ","
 
 " Change NERDTreeSortOrder / Reveal file hotkey
 let NERDTreeSortOrder=['*', '\.swp$', '\.bak$', '\~$']
+map <Leader>n :NERDTreeToggle<CR>
 map <Leader>r :NERDTreeFind<CR>
 
 " Map CommandT
