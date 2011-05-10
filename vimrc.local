@@ -11,6 +11,15 @@ set guioptions-=rL
 " Remap the leader character
 let mapleader = ","
 
+" highlight current line and column of current pane
+set cursorline
+set cursorcolumn
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+autocmd WinEnter * setlocal cursorcolumn
+autocmd WinLeave * setlocal nocursorcolumn
+
+
 " Change NERDTreeSortOrder / Reveal file hotkey
 let NERDTreeSortOrder=['*', '\.swp$', '\.bak$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
@@ -55,8 +64,15 @@ nnoremap <Leader>fd :Gdiff<CR>
 nnoremap <Leader>fr :Gread<CR>
 nnoremap <Leader>fl :Glog<CR>
 
+" Bufexplorer options
+let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
+
+" Add shortcut to last buffer
+nmap <Leader>l :buffer #<CR>
+
 " Use Ack instead of Grep
-set grepprg=ack
+set grepprg="ack -a"
 set grepformat=%f:%l:%m
 
 " Remove trailing whitespace on save of certain files
@@ -69,6 +85,12 @@ autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4
 " autocmd FileType python match TooLong '\%>80v.\+'
 " autocmd FileType ruby match TooLong '\%>100v.\+'
 
+" Set visual mode to work with arrows
+vmap <Left> h
+vmap <Down> j
+vmap <Up> k
+vmap <Right> l
+
 " Use verbose syntax highlight in Python
 let python_highlight_all=1
 
@@ -78,14 +100,14 @@ au BufRead,BufNewFile {*.thor}    set ft=ruby
 " Setup less files
 au BufRead,BufNewFile {*.less}    set ft=less
 
-
-" Default color scheme
-color desert
-
 " Use an undodir to persist all undo history
 set undodir=~/.vim/backup 
 
 " Set line numbers relative
 set relativenumber
 au BufReadPost * set relativenumber
+
+" Formatting for less
+au BufNewFile,BufRead *.less set filetype=css autoindent
+
 

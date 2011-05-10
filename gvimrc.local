@@ -7,3 +7,11 @@ set lines=50 columns=150
 
 " Default gui color scheme
 color twilight
+
+" Set a column to show when text is too long
+set colorcolumn=100
+autocmd FileType python set colorcolumn=80
+hi ColorColumn guibg=#222222
+
+" Added a color rule for lines that are too long
+hi TooLong guibg=#ff0000 guifg=#f8f8f8
